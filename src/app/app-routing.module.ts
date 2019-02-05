@@ -5,10 +5,11 @@ import { AdminComponent } from "./admin/admin.component";
 import { LoginComponent } from "./login/login.component";
 import { NoAccessComponent } from "./no-access/no-access.component";
 import { AuthGuard } from "./auth/auth.guard";
+import { AdminAuthGuard } from './auth/admin-auth.guard';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "admin", component: AdminComponent, canActivate: [AuthGuard] },
+  { path: "admin", component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
   { path: "login", component: LoginComponent },
   { path: "no-access", component: NoAccessComponent }
 ];

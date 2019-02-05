@@ -13,6 +13,7 @@ import { AuthService } from "./auth/auth.service";
 import { OrderService } from "./services/order.service";
 import { fakeBackendProvider } from "./fake-backend";
 import { AuthGuard } from './auth/auth.guard';
+import { AdminAuthGuard } from './auth/admin-auth.guard';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthGuard } from './auth/auth.guard';
     AuthService,
     OrderService,
     AuthGuard,
+    AdminAuthGuard,
     //for creating a mock-backend
     fakeBackendProvider
   ],
