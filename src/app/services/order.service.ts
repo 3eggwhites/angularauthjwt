@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -9,8 +10,18 @@ export class OrderService {
 
   getOrders() {
     let token = localStorage.getItem("token");
-    let headers = new HttpHeaders({'Authorization': 'Bearer '+token});
+    let headers = new HttpHeaders();
+    headers.set("Authorization", "Bearer " + token);
     let httpOptions = { headers: headers };
-    return this.httpClient.get("/api/orders", httpOptions);
+    return this.httpClient.get("/api/orders", {
+      headers: new HttpHeaders().set(
+        "Authorization",
+        `Bearer ${localStorage.getItem("token")}`
+      )
+    }).pipe(
+      map((response: HttpResponse<any[]>) => {
+        return response;
+      })
+    )
   }
 }

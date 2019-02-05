@@ -15,6 +15,5 @@ export class AdminComponent implements OnInit {
     this.orderService.getOrders().subscribe(response => {
       this.orders = response as any;
     });
-    console.log(this.orders);
   }
 }

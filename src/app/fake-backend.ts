@@ -45,7 +45,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
           //order authorization logic
           if (request.url.endsWith("/api/orders") && request.method === "GET") {
-            console.log(request);
             if (request.headers.get("Authorization") === "Bearer " + _token) {
               return of(new HttpResponse({ status: 200, body: [1, 2, 3] }));
             } else {
