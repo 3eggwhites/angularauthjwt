@@ -12,6 +12,7 @@ import { NoAccessComponent } from "./no-access/no-access.component";
 import { AuthService } from "./auth/auth.service";
 import { OrderService } from "./services/order.service";
 import { fakeBackendProvider } from "./fake-backend";
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { fakeBackendProvider } from "./fake-backend";
   providers: [
     AuthService,
     OrderService,
+    AuthGuard,
     //for creating a mock-backend
     fakeBackendProvider
   ],
